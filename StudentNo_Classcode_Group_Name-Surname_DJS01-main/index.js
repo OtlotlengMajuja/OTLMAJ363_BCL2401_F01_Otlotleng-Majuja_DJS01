@@ -24,7 +24,7 @@ const rf = fuel - (fbr * time); //calculates remaining fuel
 // Pick up an error with how the function below is called and make it robust to such errors
 calcNewVel = (velocity, acceleration, time) => {
   const acc2 = acceleration * conversionFactor.m_s2_to_kmh; // Access the conversion factor property
-  return velocity + (acc2 * time)
+  return velocity + (acc2 * (time / 3600)) // Convert time to hours for consistent unit
 }
 
 const vel2 = calcNewVel(velocity, acceleration, time);  //calculates new velocity based on acceleration
