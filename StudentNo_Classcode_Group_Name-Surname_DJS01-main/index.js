@@ -19,22 +19,17 @@ const conversionFactor = { m_s2_to_kmh: 3.6 }; // 1 m/s^2 ≈ 3.6 km/h
 const distance2 = distance + (velocity * (time / 3600)); //Calculates new distance
 
 // Calulate the remaining fuel
-const rf = fuel - (fbr * time); //calculates remaining fuel
+const rf = fuel - (fbr * time); //Calculates remaining fuel
 
 // Pick up an error with how the function below is called and make it robust to such errors
-calcNewVel = (velocity, acceleration, time) => {
+const calcNewVel = (velocity, acceleration, time) => {
   const acc2 = acceleration * conversionFactor.m_s2_to_kmh; // Access the conversion factor property
   return velocity + (acc2 * (time / 3600)) // Convert time to hours for consistent unit
 }
 
-const vel2 = calcNewVel(velocity, acceleration, time);  //calculates new velocity based on acceleration
+const vel2 = calcNewVel(velocity, acceleration, time);  //Calculates new velocity based on acceleration
 
 console.log(`Corrected New Velocity: ${vel2.toFixed(2)} km/h`); // Returns the value up to two decimal points
 console.log(`Corrected New Distance: ${distance2.toFixed(2)} km`); // Returns the value up to two decimal points
 console.log(`Corrected Remaining Fuel: ${rf.toFixed(2)} kg`); // Returns the value up to two decimal points
-
-
-
-
-
 
