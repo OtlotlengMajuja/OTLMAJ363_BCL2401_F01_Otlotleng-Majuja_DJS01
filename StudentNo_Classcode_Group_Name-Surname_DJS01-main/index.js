@@ -12,12 +12,10 @@ const time = 3600; // seconds (1 hour)
 const distance = 0; // distance (km)
 const fuel = 5000; // remaining fuel (kg)
 const fbr = 0.5; // fuel burn rate (kg/s)
-
-
 // Conversion factor for acceleration
 const conversionFactor = { m_s2_to_kmh: 3.6 }; // 1 m/s^2 ≈ 3.6 km/h
 
-const distance2 = distance + (velocity * time) //calcultes new distance
+const distance2 = distance + (velocity(time * conversionFactor)); //calculates new distance
 
 
 const rf = fbr * time //calculates remaining fuel
@@ -28,9 +26,9 @@ calcNewVel = (velocity, acceleration, time) => {
   return velocity + (acceleration * time)
 }
 
-console.log(`Corrected New Velocity: ${vel2} km/h`);
+//console.log(`Corrected New Velocity: ${vel2} km/h`);
 console.log(`Corrected New Distance: ${d2} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+//console.log(`Corrected Remaining Fuel: ${rf} kg`);
 
 
 
