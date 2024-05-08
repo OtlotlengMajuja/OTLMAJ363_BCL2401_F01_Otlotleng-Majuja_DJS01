@@ -30,7 +30,7 @@ calcNewVel = (velocity, acceleration, time) => {
 const vel2 = calcNewVel(velocity, acceleration, time);  //calculates new velocity based on acceleration
 
 console.log(`Corrected New Velocity: ${vel2} km/h`);
-console.log(`Corrected New Distance: ${d2} km`);
+console.log(`Corrected New Distance: ${distance2} km`);
 console.log(`Corrected Remaining Fuel: ${rf} kg`);
 
 
