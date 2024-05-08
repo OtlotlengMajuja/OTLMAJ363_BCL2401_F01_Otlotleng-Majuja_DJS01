@@ -29,9 +29,9 @@ calcNewVel = (velocity, acceleration, time) => {
 
 const vel2 = calcNewVel(velocity, acceleration, time);  //calculates new velocity based on acceleration
 
-console.log(`Corrected New Velocity: ${vel2} km/h`);
-console.log(`Corrected New Distance: ${distance2} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+console.log(`Corrected New Velocity: ${vel2.toFixed(2)} km/h`); // Returns the value up to two decimal points
+console.log(`Corrected New Distance: ${distance2.toFixed(2)} km`); // Returns the value up to two decimal points
+console.log(`Corrected Remaining Fuel: ${rf.toFixed(2)} kg`); // Returns the value up to two decimal points
 
 
 
