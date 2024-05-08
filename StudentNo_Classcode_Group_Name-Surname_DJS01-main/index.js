@@ -23,7 +23,7 @@ const rf = fuel - (fbr * time); //calculates remaining fuel
 
 // Pick up an error with how the function below is called and make it robust to such errors
 calcNewVel = (velocity, acceleration, time) => {
-  const acc2 = acceleration * conversionFactor;
+  const acc2 = acceleration * conversionFactor.m_s2_to_kmh; // Access the conversion factor property
   return velocity + (acc2 * time)
 }
 
