@@ -12,6 +12,7 @@ const time = 3600; // seconds (1 hour)
 const distance = 0; // distance (km)
 const fuel = 5000; // remaining fuel (kg)
 const fbr = 0.5; // fuel burn rate (kg/s)
+const convertionFactor = 12960 // converts m/s^2 to km/h^2 (km/h^2 * s^2/m)
 
 // Convert the time to hours for consistent unit
 const timeInHours = time / 3600;
