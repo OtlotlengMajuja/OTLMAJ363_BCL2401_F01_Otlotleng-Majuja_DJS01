@@ -32,12 +32,11 @@ if (rf < 0) {
 
 // Calculate the new velocity based on acceration
 const calcNewVel = (velocity, acceleration, time) => {
-  const newVelocity = velocity + (acceleration * (time / 3600)); // Time in hours
-  if (newVelocity < 0) {
-    newVelocity = 0;
+  if (velocity < 0) {
+    velocity = 0;
     console.log("Error: Velocity cannot be negative. Set velocity to 0.");
   }
-  return newVelocity;
+  return velocity + (acceleration * (time / 3600)); // Time in hours
 };
 
 const vel2 = calcNewVel(velocity, acceleration, time);  //Calculates new velocity based on acceleration
