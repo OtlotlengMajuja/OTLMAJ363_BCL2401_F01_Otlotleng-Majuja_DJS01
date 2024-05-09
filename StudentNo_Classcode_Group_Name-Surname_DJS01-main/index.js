@@ -20,20 +20,25 @@ const timeInHours = time / 3600;
 const distance2 = distance + (velocity * timeInHours);
 if (distance2 < 0) {
   distance2 = 0;
-  console.log("Error: Distance cannot be negative. Set distance to 0.")
-}
+  console.log("Error: Distance cannot be negative. Set distance to 0.");
+};
 
 // Calulate the remaining fuel
 const rf = fuel - (fbr * time);
 if (rf < 0) {
   rf = 0;
-  console.log("Error: Fuel cannot be negative. Set remaining fuel to 0.")
-}
+  console.log("Error: Fuel cannot be negative. Set remaining fuel to 0.");
+};
 
-// Pick up an error with how the function below is called and make it robust to such errors
+// Calculate the new velocity based on acceration
 const calcNewVel = (velocity, acceleration, time) => {
-  return velocity + (acceleration * (time / 3600)) // Convert time to hours for consistent unit
-}
+  const newVelocity = velocity + (acceleration * (time / 3600)); // Time in hours
+  if (newVelocity < 0) {
+    newVelocity = 0;
+    console.log("Error: Velocity cannot be negative. Set velocity to 0.");
+  }
+  return newVelocity;
+};
 
 const vel2 = calcNewVel(velocity, acceleration, time);  //Calculates new velocity based on acceleration
 
