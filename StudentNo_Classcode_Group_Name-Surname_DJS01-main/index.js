@@ -17,7 +17,11 @@ const fbr = 0.5; // fuel burn rate (kg/s)
 const timeInHours = time / 3600;
 
 // Calculate the new distance
-const distance2 = distance + (velocity * (time / 3600)); //Calculates new distance
+const distance2 = distance + (velocity * timeInHours);
+if (distance2 < 0) {
+  distance2 = 0;
+  console.log("Error: Distance cannot be negative. Set distance to 0.")
+}
 
 // Calulate the remaining fuel
 const rf = fuel - (fbr * time); //Calculates remaining fuel
