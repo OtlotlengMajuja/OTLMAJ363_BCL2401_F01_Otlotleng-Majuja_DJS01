@@ -24,12 +24,15 @@ if (distance2 < 0) {
 }
 
 // Calulate the remaining fuel
-const rf = fuel - (fbr * time); //Calculates remaining fuel
+const rf = fuel - (fbr * time);
+if (rf < 0) {
+  rf = 0;
+  console.log("Error: Fuel cannot be negative. Set remaining fuel to 0.")
+}
 
 // Pick up an error with how the function below is called and make it robust to such errors
 const calcNewVel = (velocity, acceleration, time) => {
-  const acc2 = acceleration * conversionFactor.m_s2_to_kmh; // Access the conversion factor property
-  return velocity + (acc2 * (time / 3600)) // Convert time to hours for consistent unit
+  return velocity + (acceleration * (time / 3600)) // Convert time to hours for consistent unit
 }
 
 const vel2 = calcNewVel(velocity, acceleration, time);  //Calculates new velocity based on acceleration
