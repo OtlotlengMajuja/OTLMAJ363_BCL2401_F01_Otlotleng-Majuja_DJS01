@@ -18,14 +18,14 @@ const conversionFactor = 12960 // converts m/s^2 to km/h^2 (km/h^2 * s^2/m)
 const timeInHours = time / 3600;
 
 // Calculate the new distance
-const distance2 = distance + (velocity * timeInHours);
+var distance2 = distance + (velocity * timeInHours);
 if (distance2 < 0) {
   distance2 = 0;
   console.log("Error: Distance cannot be negative. Set distance to 0.");
 };
 
 // Calulate the remaining fuel
-const rf = fuel - (fbr * time);
+var rf = fuel - (fbr * time);
 if (rf < 0) {
   rf = 0;
   console.log("Error: Fuel cannot be negative. Set remaining fuel to 0.");
