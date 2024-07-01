@@ -18,31 +18,47 @@ const conversionFactor = 12960 // converts m/s^2 to km/h^2 (km/h^2 * s^2/m)
 const timeInHours = time / 3600;
 
 // Calculate the new distance
-var distance2 = distance + (velocity * timeInHours);
-if (distance2 < 0) {
-  distance2 = 0;
-  console.log("Error: Distance cannot be negative. Set distance to 0.");
-};
+const calculateDistance = (initialDistance, velocity, timeInHours) => {
+  const distance2 = initialDistance + (velocity * timeInHours);
+  if (distance2 < 0) {
+    distance2 = 0;
+    throw new Error("Distance cannot be negative. Set distance to 0.");
+  };
+  return distance2;
+}
+
 
 // Calulate the remaining fuel
-var rf = fuel - (fbr * time);
-if (rf < 0) {
-  rf = 0;
-  console.log("Error: Fuel cannot be negative. Set remaining fuel to 0.");
-};
+const calculateRemainingFuel = (fuel, fbr, time) => {
+  const remainingFuel = fuel - (fbr * time);
+  if (remainingFuel < 0) {
+    rf = 0;
+    throw new Error("Fuel cannot be negative. Set remaining fuel to 0.");
+  };
+  return remainingFuel;
+}
+
+
 
 // Calculate the new velocity based on acceration
-const calcNewVel = (velocity, acceleration, time) => {
+const calculateNewVelocity = (velocity, acceleration, time, conversionFactor) => {
   if (velocity < 0) {
-    velocity = 0;
-    console.log("Error: Velocity cannot be negative. Set velocity to 0.");
+    throw new Error("Velocity cannot be negative. Set velocity to 0.");
   }
   return velocity + (acceleration * conversionFactor * (time / 3600)); // Time in hours
 };
 
-const vel2 = calcNewVel(velocity, acceleration, time);  //Calculates new velocity based on acceleration
+try {
+  const newDistance = calculateDistance(distance, velocity, timeInHours);
+  const remainingFuel = calculateRemainingFuel(fuel, fbr, time);
+  const newVelocity = calculateNewVelocity(velocity, acceleration, time, conversionFactor);
 
-console.log(`Corrected New Velocity: ${vel2.toFixed(2)} km/h`); // Returns the value up to two decimal points
-console.log(`Corrected New Distance: ${distance2.toFixed(2)} km`); // Returns the value up to two decimal points
-console.log(`Corrected Remaining Fuel: ${rf.toFixed(2)} kg`); // Returns the value up to two decimal points
+  console.log(`Corrected New Velocity: ${newVelocity.toFixed(2)} km/h`); // Returns the value up to two decimal points
+  console.log(`Corrected New Distance: ${newDistance.toFixed(2)} km`); // Returns the value up to two decimal points
+  console.log(`Corrected Remaining Fuel: ${remainingFuel.toFixed(2)} kg`); // Returns the value up to two decimal points
+} catch (error) {
+  console.error(error.message)
+}
+
+
 
